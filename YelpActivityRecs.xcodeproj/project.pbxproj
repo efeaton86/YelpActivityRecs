@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F7DDB66627DE8EE600D9D7F6 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DDB66527DE8EE600D9D7F6 /* ContentModel.swift */; };
 		F7DDB67227DF504A00D9D7F6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DDB67127DF504A00D9D7F6 /* Settings.swift */; };
+		F7DDB67427DF524100D9D7F6 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DDB67327DF524100D9D7F6 /* Business.swift */; };
+		F7DDB67627DF540E00D9D7F6 /* BusinessSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DDB67527DF540E00D9D7F6 /* BusinessSearch.swift */; };
 		F7E97A4527DE8369008309CD /* YelpActivityRecsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E97A4427DE8369008309CD /* YelpActivityRecsApp.swift */; };
 		F7E97A4727DE8369008309CD /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E97A4627DE8369008309CD /* LaunchView.swift */; };
 		F7E97A4927DE836A008309CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7E97A4827DE836A008309CD /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 		F7DDB66527DE8EE600D9D7F6 /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
 		F7DDB66B27DE926E00D9D7F6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7DDB67127DF504A00D9D7F6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		F7DDB67327DF524100D9D7F6 /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		F7DDB67527DF540E00D9D7F6 /* BusinessSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSearch.swift; sourceTree = "<group>"; };
 		F7E97A4127DE8369008309CD /* YelpActivityRecs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YelpActivityRecs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E97A4427DE8369008309CD /* YelpActivityRecsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpActivityRecsApp.swift; sourceTree = "<group>"; };
 		F7E97A4627DE8369008309CD /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
@@ -40,6 +44,8 @@
 		F7DDB66127DE8DC800D9D7F6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F7DDB67327DF524100D9D7F6 /* Business.swift */,
+				F7DDB67527DF540E00D9D7F6 /* BusinessSearch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -58,6 +64,14 @@
 				F7E97A4627DE8369008309CD /* LaunchView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F7DDB67727DF5B7700D9D7F6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F7DDB67127DF504A00D9D7F6 /* Settings.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		F7E97A3827DE8369008309CD = {
@@ -81,10 +95,10 @@
 			children = (
 				F7DDB66B27DE926E00D9D7F6 /* Info.plist */,
 				F7E97A4427DE8369008309CD /* YelpActivityRecsApp.swift */,
-				F7DDB67127DF504A00D9D7F6 /* Settings.swift */,
 				F7DDB66427DE8E3F00D9D7F6 /* Views */,
 				F7DDB66327DE8E1700D9D7F6 /* ViewModels */,
 				F7DDB66127DE8DC800D9D7F6 /* Models */,
+				F7DDB67727DF5B7700D9D7F6 /* Helpers */,
 				F7E97A4827DE836A008309CD /* Assets.xcassets */,
 				F7E97A4A27DE836A008309CD /* Preview Content */,
 			);
@@ -172,7 +186,9 @@
 				F7E97A4727DE8369008309CD /* LaunchView.swift in Sources */,
 				F7E97A4527DE8369008309CD /* YelpActivityRecsApp.swift in Sources */,
 				F7DDB67227DF504A00D9D7F6 /* Settings.swift in Sources */,
+				F7DDB67427DF524100D9D7F6 /* Business.swift in Sources */,
 				F7DDB66627DE8EE600D9D7F6 /* ContentModel.swift in Sources */,
+				F7DDB67627DF540E00D9D7F6 /* BusinessSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

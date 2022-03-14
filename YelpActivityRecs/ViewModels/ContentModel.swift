@@ -11,6 +11,9 @@ import CoreLocation
 class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
     var locationManager = CLLocationManager()
     
+    @Published var restaurants = [Business]()
+    @Published var sights = [Business]()
+    
     // override NSObject initializer
     override init() {
         super.init()
@@ -49,12 +52,13 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
             
             //fetch businesses
             getBusinesses(category: "restaurants", location: userLocation)
+            getBusinesses(category: "arts", location: userLocation)
         }
     }
     
     func getBusinesses(category: String, location: CLLocation) {
         // create url object
-        var urlComponents = URLComponents(string: "https://api.yelp.com/v3/businesses/search")
+        var urlComponents = URLComponents(string: Constants.yelpAPIURL)
         urlComponents?.queryItems = [
             URLQueryItem(name: "latitude", value: String(location.coordinate.latitude)),
             URLQueryItem(name: "longitude", value: String(location.coordinate.longitude)),
@@ -65,13 +69,34 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
         if let url = urlComponents?.url {
             var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
             request.httpMethod = "GET"
-            request.addValue(yelpAPIKey, forHTTPHeaderField: "Authorization")
+            request.addValue(Constants.yelpAPIKey, forHTTPHeaderField: "Authorization")
             
             let session = URLSession.shared
         
             let dataTask = session.dataTask(with: request) { data, response, error in
                 if error == nil {
                     print(response!)
+                    //parse json
+                    do {
+                        let decoder = JSONDecoder()
+                        let result = try decoder.decode(BusinessSearch.self, from: data!)
+                        
+                        DispatchQueue.main.async {
+                            switch category {
+                            case Constants.restaurantKey:
+                                self.restaurants = result.businesses
+                            case Constants.artsKey:
+                                self.sights = result.businesses
+                            default:
+                                break
+                            }
+ 
+                        }
+                    }
+                    catch {
+                        print(error)
+                    }
+                    
                 }
                 if error != nil {
                     print(error!)
