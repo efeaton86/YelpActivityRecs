@@ -16,6 +16,7 @@
 		F7DDB67F27DF753800D9D7F6 /* BusinessSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DDB67E27DF753800D9D7F6 /* BusinessSectionHeader.swift */; };
 		F7DDB68227DF761600D9D7F6 /* BusinessSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DDB68127DF761600D9D7F6 /* BusinessSection.swift */; };
 		F7DDB68427DF7D9900D9D7F6 /* BusinessRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DDB68327DF7D9900D9D7F6 /* BusinessRow.swift */; };
+		F7DDB68727DF908B00D9D7F6 /* BusinessDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DDB68627DF908B00D9D7F6 /* BusinessDetailView.swift */; };
 		F7E97A4527DE8369008309CD /* YelpActivityRecsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E97A4427DE8369008309CD /* YelpActivityRecsApp.swift */; };
 		F7E97A4727DE8369008309CD /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E97A4627DE8369008309CD /* LaunchView.swift */; };
 		F7E97A4927DE836A008309CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7E97A4827DE836A008309CD /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		F7DDB67E27DF753800D9D7F6 /* BusinessSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSectionHeader.swift; sourceTree = "<group>"; };
 		F7DDB68127DF761600D9D7F6 /* BusinessSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSection.swift; sourceTree = "<group>"; };
 		F7DDB68327DF7D9900D9D7F6 /* BusinessRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessRow.swift; sourceTree = "<group>"; };
+		F7DDB68627DF908B00D9D7F6 /* BusinessDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessDetailView.swift; sourceTree = "<group>"; };
 		F7E97A4127DE8369008309CD /* YelpActivityRecs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YelpActivityRecs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E97A4427DE8369008309CD /* YelpActivityRecsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpActivityRecsApp.swift; sourceTree = "<group>"; };
 		F7E97A4627DE8369008309CD /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
@@ -89,12 +91,21 @@
 		F7DDB67D27DF751500D9D7F6 /* BusinessList */ = {
 			isa = PBXGroup;
 			children = (
+				F7DDB68527DF907A00D9D7F6 /* DetailView */,
 				F7DDB67B27DF736900D9D7F6 /* BusinessList.swift */,
 				F7DDB68127DF761600D9D7F6 /* BusinessSection.swift */,
 				F7DDB67E27DF753800D9D7F6 /* BusinessSectionHeader.swift */,
 				F7DDB68327DF7D9900D9D7F6 /* BusinessRow.swift */,
 			);
 			path = BusinessList;
+			sourceTree = "<group>";
+		};
+		F7DDB68527DF907A00D9D7F6 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				F7DDB68627DF908B00D9D7F6 /* BusinessDetailView.swift */,
+			);
+			path = DetailView;
 			sourceTree = "<group>";
 		};
 		F7E97A3827DE8369008309CD = {
@@ -207,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7E97A4727DE8369008309CD /* LaunchView.swift in Sources */,
+				F7DDB68727DF908B00D9D7F6 /* BusinessDetailView.swift in Sources */,
 				F7DDB68427DF7D9900D9D7F6 /* BusinessRow.swift in Sources */,
 				F7DDB67A27DF67EB00D9D7F6 /* HomeView.swift in Sources */,
 				F7E97A4527DE8369008309CD /* YelpActivityRecsApp.swift in Sources */,
