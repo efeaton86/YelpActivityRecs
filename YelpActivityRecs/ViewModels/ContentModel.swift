@@ -10,9 +10,12 @@ import CoreLocation
 
 class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
     var locationManager = CLLocationManager()
+    @Published var authorizationState = CLAuthorizationStatus.notDetermined
     
     @Published var restaurants = [Business]()
     @Published var sights = [Business]()
+    
+    
     
     // override NSObject initializer
     override init() {
@@ -31,6 +34,8 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
     
     // MARK: - Location Manager Delegate Methods
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        // update authorizationState proerty
+        authorizationState = locationManager.authorizationStatus
         
         if manager.authorizationStatus == .authorizedAlways ||
             manager.authorizationStatus == .authorizedWhenInUse {
@@ -81,12 +86,22 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
                         let decoder = JSONDecoder()
                         let result = try decoder.decode(BusinessSearch.self, from: data!)
                         
+                        // sort businesses
+                        var businesses = result.businesses
+                        businesses.sorted { b1, b2 in
+                            return b1.distance ?? 0 < b2.distance ?? 0
+                        }
+                        // download business image
+                        for b in result.businesses {
+                            b.getImageData()
+                        }
+                        
                         DispatchQueue.main.async {
                             switch category {
                             case Constants.restaurantKey:
-                                self.restaurants = result.businesses
+                                self.restaurants = businesses
                             case Constants.artsKey:
-                                self.sights = result.businesses
+                                self.sights = businesses
                             default:
                                 break
                             }
