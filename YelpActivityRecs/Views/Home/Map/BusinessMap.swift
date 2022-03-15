@@ -25,13 +25,14 @@ struct BusinessMap: UIViewRepresentable {
                 a.title = business.name ?? ""
                 annotations.append(a)
             }
-
         }
         return annotations
     }
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
+        // mapView asks the delegate which view to show and also notifies when a tap occurs
+        mapView.delegate = context.coordinator
         
         // Make user show on map
         mapView.showsUserLocation = true
@@ -53,5 +54,35 @@ struct BusinessMap: UIViewRepresentable {
         
         uiView.removeAnnotation(uiView.annotations as! MKAnnotation)
         
+    }
+    
+    // MARK: - Coordinator Class
+    func makeCoordinator() -> Coordinator {
+        return Coordinator()
+    }
+    
+    class Coordinator: NSObject, MKMapViewDelegate {
+        
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            // no need to return annotation view for user location, so return nil
+            if annotation is MKUserLocation {
+                return nil
+            }
+            
+            // check if there is a reusable annotation view
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: Constants.annotationReuseID)
+            
+            // if there is not a annotaionView that can be reused - create a new one
+            if annotationView == nil {
+                annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: Constants.annotationReuseID)
+                annotationView!.canShowCallout = true
+                annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            }
+            // there is annotation that can be reused
+            else {
+                annotationView!.annotation = annotation
+            }
+            return annotationView
+        }
     }
 }
