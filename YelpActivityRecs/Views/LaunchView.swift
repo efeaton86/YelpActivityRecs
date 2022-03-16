@@ -16,28 +16,16 @@ struct LaunchView: View {
         
         switch model.authorizationState {
         case .notDetermined:
-            HomeView()
+            OnboardingView()
         case .authorizedAlways:
             HomeView()
         case .authorizedWhenInUse:
             HomeView()
+        case .denied:
+            LocationDeniedView()
         default:
-            HomeView()
+            OnboardingView()
         }
-
-//        switch model.authorizationState {
-//        case .notDetermined:
-//            HomeView()
-//        case CLAuthorizationStatus.authorizedAlways || CLAuthorizationStatus.authorizedWhenInUse:
-//            HomeView()
-//        default:
-//            HomeView()
-            
-        // if undetermined, show onboarding
-        
-        //if approved show home view
-        
-        // if denied show denied view
     }
 
 }

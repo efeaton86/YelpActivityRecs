@@ -11,6 +11,7 @@ struct HomeView: View {
     @EnvironmentObject var model: ContentModel
     
     @State var isMapViewSelected = false
+    @State var selectedBusiness: Business?
     
     var body: some View {
         
@@ -21,29 +22,60 @@ struct HomeView: View {
                     VStack(alignment: .leading) {
                         HStack {
                             Image(systemName: "location")
-                            Text("San Francisco")
+                            Text(model.placemark?.locality ?? "")
                             Spacer()
                             Button("Switch to map view") {
                                 self.isMapViewSelected = true
                             }
                         }
                         Divider()
-                        BusinessList()
+                        ZStack(alignment: .top) {
+                            BusinessList()
+                            
+                            HStack {
+                                Spacer()
+                                YelpAttribution(link: "https://yelp.com")
+                            }
+                            .padding(.trailing, -20)
+                        }
+                        
                     }
                     .padding([.horizontal, .top])
                     .navigationBarHidden(true)
                 }
                 else {
-                    // show map
-                    BusinessMap()
-                        .ignoresSafeArea()
+                    ZStack(alignment: .top) {
+                        // show map
+                        BusinessMap(selectedBusiness: $selectedBusiness)
+                            .ignoresSafeArea()
+                            .sheet(item: $selectedBusiness) { business in
+                                BusinessDetailView(business: business)
+                            }
+                        //Rectangle overlay
+                        ZStack {
+                            Rectangle()
+                                .foregroundColor(.white)
+                                .cornerRadius(5)
+                                .frame(height: 48)
+                            HStack {
+                                Image(systemName: "location")
+                                Text(model.placemark?.locality ?? "")
+                                Spacer()
+                                Button("Switch to list view") {
+                                    self.isMapViewSelected = false
+                                }
+                            }
+                            .padding()
+                        }
+                        .padding()
+                    }
+                    .navigationBarHidden(true)
                 }
             }
         }
         else {
             ProgressView()
         }
-        
     }
 }
 
